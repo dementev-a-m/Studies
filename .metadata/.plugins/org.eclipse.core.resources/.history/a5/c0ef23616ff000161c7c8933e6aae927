@@ -1,0 +1,42 @@
+package Connector;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class MainFrame extends JFrame {
+	String UserName;
+	final JTextArea history;
+	final JButton send;
+	final JTextField message;
+
+	public MainFrame(String name) {
+		super(name);
+		setLayout( new FlowLayout());
+		setSize(500,400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);		
+		message= new JTextField(10);
+		send= new JButton("Send");
+		history = new JTextArea(495, 350);
+		send.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent e) {
+							
+			}
+		});
+		add(message);
+		add(send);
+		add(history);
+		history.setLineWrap(true);
+		history.append("Test");
+		setVisible(true);
+		
+		
+	}
+	
+}

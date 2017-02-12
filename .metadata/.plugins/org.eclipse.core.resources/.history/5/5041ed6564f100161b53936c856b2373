@@ -1,0 +1,5 @@
+package model;
+
+public class ListModel implements javax.swing.ListModel<E> {
+
+}

@@ -1,9 +1,8 @@
 package Connector;
-
-import java.awt.FlowLayout;
+import java.awt.Component;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,42 +16,52 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
 public class Client extends JFrame implements Runnable{
+
 	static private Socket connection;
 	static private ObjectOutputStream output;
 	static private ObjectInputStream input;
-	String UserName;
-	final JTextArea history;
-	final JButton send;
-	final JTextField message;
-	public static void main(String[] args) {
-		new Thread(new Client("Massager")).start();;
-	}
-	public Client(String name) {
+	String name;
+	private JTextArea txtHistory;
+	private Component btnSend;
+	private JTextField txtMessage;
+	public String userName;
+	public Client(String name){
 		super(name);
-		setLayout( new FlowLayout());
+		userName=JOptionPane.showInputDialog("Введите имя:");
 		setSize(500,400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setLocationRelativeTo(null);		
-		message= new JTextField(10);
-		send= new JButton("Send");
-		history = new JTextArea(495, 350);
-		send.addActionListener(new ActionListener() {			
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==send) {
-					sendData(UserName+": " +message.getText());
-				}				
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(null);
+		
+		txtMessage = new JTextField();
+		txtMessage.setBounds(12, 318, 349, 22);
+		getContentPane().add(txtMessage);
+		txtMessage.setColumns(10);
+		
+		btnSend = new JButton("Send");
+		btnSend.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Client.sendData(userName+": " +txtMessage.getText());
+				txtMessage.setText("");
 			}
 		});
-		add(message);
-		add(send);
-		add(history);
-		history.setLineWrap(true);
-		history.append("Test");
+		btnSend.setBounds(373, 317, 97, 25);
+		getContentPane().add(btnSend);
 		
-		
+		txtHistory = new JTextArea();
+		txtHistory.setEditable(false);
+		txtHistory.setBounds(12, 13, 458, 292);
+		getContentPane().add(txtHistory);
+		setVisible(true);
 	}
+	public static void main(String[] args) {
+		
+		new Thread(new Client("Чатик")).start();
+	}
+	
 	@Override
 	public void run() {
 		try {
@@ -60,7 +69,8 @@ public class Client extends JFrame implements Runnable{
 				connection = new Socket(InetAddress.getByName("127.0.0.1"),5678);
 				output = new ObjectOutputStream(connection.getOutputStream());
 				input = new ObjectInputStream(connection.getInputStream());
-				message.setText((String)input.readObject()+"\n");
+				txtHistory.append((String)input.readObject()+"\n");
+				
 			}
 			
 		}
@@ -75,8 +85,7 @@ public class Client extends JFrame implements Runnable{
 			e.printStackTrace();
 		}
 	}
-	
-	private static void sendData(Object obj) {
+	public static void sendData(Object obj) {
 		try{
 			output.flush();
 			output.writeObject(obj);

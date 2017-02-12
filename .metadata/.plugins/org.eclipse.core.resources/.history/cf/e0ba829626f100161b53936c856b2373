@@ -1,0 +1,47 @@
+package Swift;
+
+import javax.swing.JFrame;
+import java.awt.GridLayout;
+import java.awt.Window.Type;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenuItem;
+import javax.swing.JTabbedPane;
+
+public class MainFrame extends JFrame {
+	public MainFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(600, 500);
+		getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		getContentPane().add(tabbedPane);
+		
+		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_1.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabbedPane.addTab("download", null, tabbedPane_1, null);
+		
+		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_2.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabbedPane.addTab("review", null, tabbedPane_2, null);
+		setLocationRelativeTo(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmOpenFile = new JMenuItem("Open File");
+		mnFile.add(mntmOpenFile);
+		
+		JMenu mnOption = new JMenu("Option");
+		menuBar.add(mnOption);
+		
+		JCheckBoxMenuItem chckbxmntmExit = new JCheckBoxMenuItem("Exit");
+		mnOption.add(chckbxmntmExit);
+		setVisible(true);
+	}
+
+}

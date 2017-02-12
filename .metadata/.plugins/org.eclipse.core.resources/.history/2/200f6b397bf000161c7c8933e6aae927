@@ -1,0 +1,62 @@
+package Connector;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import java.awt.TextArea;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class MainFrame extends JFrame implements Runnable{
+	String UserName;
+	public JTextField txtMassage;
+	public JButton btnSend;
+	public JTextArea txtHistory;
+
+	public MainFrame(String name) {
+		super(name);
+		setSize(500,400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(null);
+		
+		txtMassage = new JTextField();
+		txtMassage.setBounds(12, 318, 349, 22);
+		getContentPane().add(txtMassage);
+		txtMassage.setColumns(10);
+		
+		btnSend = new JButton("Send");
+		btnSend.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Client.sendData(UserName+": " +txtMassage.getText());
+				
+			}
+		});
+		btnSend.setBounds(373, 317, 97, 25);
+		getContentPane().add(btnSend);
+		
+		txtHistory = new JTextArea();
+		txtHistory.setEditable(false);
+		txtHistory.setBounds(12, 13, 458, 292);
+		getContentPane().add(txtHistory);
+		setVisible(true);
+		
+	}
+	public void interMassage(String massage)
+	{
+		
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

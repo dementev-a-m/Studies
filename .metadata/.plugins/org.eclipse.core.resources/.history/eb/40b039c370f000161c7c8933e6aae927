@@ -1,0 +1,40 @@
+package Connector;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import java.awt.TextArea;
+
+public class MainFrame extends JFrame {
+	String UserName;
+	private JTextField txtField;
+
+	public MainFrame(String name) {
+		super(name);
+		setSize(500,400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(null);
+		
+		txtField = new JTextField();
+		txtField.setBounds(12, 318, 349, 22);
+		getContentPane().add(txtField);
+		txtField.setColumns(10);
+		
+		JButton btnSend = new JButton("Send");
+		btnSend.setBounds(373, 317, 97, 25);
+		getContentPane().add(btnSend);
+		
+		TextArea textArea = new TextArea();
+		textArea.setBounds(10, 10, 460, 302);
+		getContentPane().add(textArea);
+		setVisible(true);
+		
+		
+	}
+}
