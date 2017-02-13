@@ -1,7 +1,0 @@
-INDEX VERSION 1.129+C:\Users\Антон Дементьев\Documents\Studies\.metadata\.plugins\org.eclipse.jdt.core
-1442732222.index
-4079093011.index
-452510703.index
-2501520862.index
-2637099999.index
-3412040407.index
