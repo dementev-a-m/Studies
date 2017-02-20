@@ -36,13 +36,5 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	@FXML
-	public void initialize(){
-		
-	}
-	@FXML
-	public void eventbtnAdd(){
-		txfSecondName.setText("Тест");
-		
-	}
+
 }
