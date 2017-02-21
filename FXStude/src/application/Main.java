@@ -1,6 +1,7 @@
 package application;
 	
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -16,10 +17,8 @@ public class Main extends Application {
 	private Stage stage;
 	private Scene scene;
 	private AnchorPane pane;
-	@FXML
-	private TextField txfSecondName;
-	@FXML
-	private Button btnAdd;
+	public static ArrayList<Person> persons=new ArrayList<Person>();
+	
 	public void start(Stage stage) {	
 			this.stage=stage;
 			try {

@@ -4,27 +4,28 @@ import java.util.Date;
 
 import javafx.scene.image.Image;
 
-public class Personal {
+public class Person {
 	private String lastName;
 	private String  firstName;
 	private String middelName;
 	private Date dataBithday;
 	private Image photo;
-	public Personal() {
+	public Person() {
 		
 	}
-	public Personal(String lastName,String  firstName,String middelName){
+	public Person(String lastName,String  firstName,String middelName){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
+		System.out.println(lastName + "  "+ firstName + "  "+middelName);
 	}
-	public Personal(String lastName,String  firstName,String middelName,Date dataBithday){
+	public Person(String lastName,String  firstName,String middelName,Date dataBithday){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
 		this.dataBithday = dataBithday;
 	}
-	public Personal(String lastName,String  firstName,String middelName,Date dataBithday,Image photo){
+	public Person(String lastName,String  firstName,String middelName,Date dataBithday,Image photo){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
