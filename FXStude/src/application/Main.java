@@ -1,14 +1,12 @@
 package application;
 	
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,7 +15,7 @@ public class Main extends Application {
 	private Stage stage;
 	private Scene scene;
 	private AnchorPane pane;
-	public static ArrayList<Person> persons=new ArrayList<Person>();
+	public static ObservableList<Person> persons = FXCollections.observableArrayList();
 	
 	public void start(Stage stage) {	
 			this.stage=stage;

@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javafx.scene.image.Image;
@@ -8,7 +9,7 @@ public class Person {
 	private String lastName;
 	private String  firstName;
 	private String middelName;
-	private Date dataBithday;
+	private LocalDate dataBithday;
 	private Image photo;
 	public Person() {
 		
@@ -17,15 +18,14 @@ public class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
-		System.out.println(lastName + "  "+ firstName + "  "+middelName);
 	}
-	public Person(String lastName,String  firstName,String middelName,Date dataBithday){
+	public Person(String lastName,String  firstName,String middelName,LocalDate dataBithday){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
 		this.dataBithday = dataBithday;
 	}
-	public Person(String lastName,String  firstName,String middelName,Date dataBithday,Image photo){
+	public Person(String lastName,String  firstName,String middelName,LocalDate dataBithday,Image photo){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
@@ -50,10 +50,10 @@ public class Person {
 	public void setMiddelName(String middelName) {
 		this.middelName = middelName;
 	}
-	public Date getDataBithday() {
+	public LocalDate getDataBithday() {
 		return dataBithday;
 	}
-	public void setDataBithday(Date dataBithday) {
+	public void setDataBithday(LocalDate dataBithday) {
 		this.dataBithday = dataBithday;
 	}
 	public Image getPhoto() {
