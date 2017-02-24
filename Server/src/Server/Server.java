@@ -7,14 +7,16 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Server implements Runnable{
 		static private ServerSocket server;
 		static private Socket connection;
 		static private ObjectOutputStream output;
 		static private ObjectInputStream input;
+		static private ArrayList<Person> persons = new ArrayList<Person>();
 		public static void main(String[] args) {
-			new Thread(new Server()).start();
+				new Thread(new Server()).start();
 		}
 		@Override
 		public void run() {
@@ -24,7 +26,7 @@ public class Server implements Runnable{
 					connection =  server.accept();
 					output = new ObjectOutputStream(connection.getOutputStream());
 					input = new ObjectInputStream(connection.getInputStream());
-					output.writeObject((String)input.readObject());
+					persons.add((Person) input.readObject());
 				}				
 			}
 			catch(UnknownHostException e){}
@@ -32,5 +34,15 @@ public class Server implements Runnable{
 			catch (HeadlessException e) {} 
 			catch (ClassNotFoundException e) {}				
 			}	
+		/*public static void NewPers(){
+			try {
+				output.flush();
+				output.writeObject(new Person("Серввер","Присала"," хера"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}*/
 
 }

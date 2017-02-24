@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="599.0" prefWidth="999.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PersonalController">
+<AnchorPane prefHeight="599.0" prefWidth="999.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PersonsController">
    <children>
       <SplitPane dividerPositions="0.5625" layoutY="30.0" prefHeight="569.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <items>
@@ -54,15 +54,15 @@
                         <Label text="Имя: " GridPane.rowIndex="1" />
                         <Label text="Отчество:" GridPane.rowIndex="2" />
                         <Label text="Дата рождения:" GridPane.rowIndex="3" />
-                        <TextField fx:id="txfSecondName" alignment="TOP_LEFT" prefHeight="22.0" prefWidth="367.0" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtFirstName" prefHeight="31.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtMiddelName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txfLastName" alignment="TOP_LEFT" prefHeight="22.0" prefWidth="367.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="txfFirstName" prefHeight="31.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txfMiddelName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <DatePicker fx:id="dataBithday" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <ImageView fx:id="imageViewPhoto" fitHeight="220.0" fitWidth="274.0" layoutX="38.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="32.0">
                      <image>
-                        <Image url="@../../rec/photo.jpg" />
+                        <Image url="@../../../rec/photo.jpg" />
                      </image></ImageView>
                   <Button fx:id="btnAdd" layoutX="38.0" layoutY="464.0" mnemonicParsing="false" onAction="#eventbtnAdd" text="Добавить" />
                   <Button fx:id="btnChange" layoutX="136.0" layoutY="464.0" mnemonicParsing="false" onAction="#eventbtnChange" text="Изменить" />

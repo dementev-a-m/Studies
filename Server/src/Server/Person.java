@@ -1,8 +1,6 @@
-package application;
+package Server;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import javafx.scene.image.Image;
 
 public class Person {
@@ -24,6 +22,7 @@ public class Person {
 		this.lastName = lastName;
 		this.middelName = middelName;
 		this.dataBithday = dataBithday;
+		System.out.println(firstName+" "+lastName+" "+middelName +" записан в список");
 	}
 	public Person(String lastName,String  firstName,String middelName,LocalDate dataBithday,Image photo){
 		this.firstName = firstName;
