@@ -22,12 +22,12 @@ public class Client implements Runnable{
 	}
 	@Override
 	public void run() {
-		while(true){
+		while(!Thread.currentThread().isInterrupted()) {
 			try {
 				connection = new Socket(InetAddress.getByName(hostname), port);
 				output = new ObjectOutputStream(connection.getOutputStream());
 				input = new ObjectInputStream(connection.getInputStream());
-			Main.persons.add((Person)input.readObject());
+				input.readObject();
 			} catch (UnknownHostException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -35,13 +35,16 @@ public class Client implements Runnable{
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		}		
+		}	
+	
 	}
 	public static void sendData(Object obj) {
 		try {
-			output.flush();
-			output.writeObject(obj);
-		} catch (IOException e) {
+			output.flush();	
+			output.writeObject(obj);				
+		}
+		catch (NullPointerException e) {}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

@@ -16,6 +16,7 @@ public class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middelName = middelName;
+		System.out.println(lastName + " "+firstName+""+ middelName);
 	}
 	public Person(String lastName,String  firstName,String middelName,LocalDate dataBithday){
 		this.firstName = firstName;

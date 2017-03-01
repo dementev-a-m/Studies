@@ -16,8 +16,9 @@ public class Main extends Application {
 	private Stage stage;
 	private Scene scene;
 	private AnchorPane pane;
-	//public static String host="127.0.0.1";
-	//public static int port=5678;
+	private static Thread connectToServer;
+	public static String host="127.0.0.1";
+	public static int port=5678;
 	public static ObservableList<Person> persons = FXCollections.observableArrayList();
 	public static int id;
 	public void start(Stage stage) {	
@@ -25,17 +26,21 @@ public class Main extends Application {
 			try {
 				pane=FXMLLoader.load(getClass().getResource("views/MainWindows.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			scene = new Scene(pane);
 			stage.setScene(scene);
-			stage.show();		
+			stage.show();	
 	}	
 	public static void main(String[] args) {
-		//new Thread( new Client(host,port)).start(); 
+		//connectToServer= new Thread( new Client(host,port));
+		//connectToServer.start();
 		launch(args);
 		
+	}
+	@Override
+	public void stop(){
+		//connectToServer.interrupt();  
 	}
 
 }

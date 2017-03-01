@@ -49,8 +49,7 @@ public class Client extends JFrame implements Runnable{
 			}
 		});
 		btnSend.setBounds(373, 317, 97, 25);
-		getContentPane().add(btnSend);
-		
+		getContentPane().add(btnSend);		
 		txtHistory = new JTextArea();
 		txtHistory.setEditable(false);
 		txtHistory.setBounds(12, 13, 458, 292);
@@ -69,8 +68,7 @@ public class Client extends JFrame implements Runnable{
 				connection = new Socket(InetAddress.getByName("127.0.0.1"),5678);
 				output = new ObjectOutputStream(connection.getOutputStream());
 				input = new ObjectInputStream(connection.getInputStream());
-				txtHistory.append((String)input.readObject()+"\n");
-				
+				txtHistory.append((String)input.readObject()+"\n");				
 			}
 			
 		}

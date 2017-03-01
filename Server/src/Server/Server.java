@@ -7,14 +7,15 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
+
+import javax.swing.JFrame;
 
 public class Server implements Runnable{
 		static private ServerSocket server;
 		static private Socket connection;
 		static private ObjectOutputStream output;
 		static private ObjectInputStream input;
-		static private ArrayList<Person> persons = new ArrayList<Person>();
+		//static private ArrayList<Person> persons = new ArrayList<Person>();
 		public static void main(String[] args) {
 				new Thread(new Server()).start();
 		}
@@ -24,16 +25,21 @@ public class Server implements Runnable{
 				server = new ServerSocket(5678,1000);
 				while(true) {
 					connection =  server.accept();
+					System.out.println(connection.getInetAddress());
 					output = new ObjectOutputStream(connection.getOutputStream());
 					input = new ObjectInputStream(connection.getInputStream());
-					persons.add((Person) input.readObject());
-				}				
+					output.writeObject(input.readObject());
+				}	
+				
 			}
 			catch(UnknownHostException e){}
 			catch (IOException e){} 
 			catch (HeadlessException e) {} 
-			catch (ClassNotFoundException e) {}				
-			}	
+			catch (ClassNotFoundException e) {}		
+			finally {
+				System.out.println("Сервер остановлен");
+			}
+		}	
 		/*public static void NewPers(){
 			try {
 				output.flush();

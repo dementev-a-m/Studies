@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import javax.imageio.ImageIO;
 
+import application.Main;
+import connectToServer.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,9 +58,11 @@ public class PersonsController {
 	}
 	@FXML
 	private void eventbtnAdd(){
+		//Stage stage = new Stage();
+		//newWindows(stage);
 		if(txfLastName.getText()!="" && txfFirstName.getText()!="" && txfMiddelName.getText()!="" &&getDate()!=null)
 			Main.persons.add(new Person (txfLastName.getText(),txfFirstName.getText(),txfMiddelName.getText(),getDate()));
-			//Client.sendData(Main.persons.get(0));
+			//Client.sendData(txfLastName.getText());
 	}
 	@FXML
 	private void eventbtnDelete(){
@@ -70,7 +74,7 @@ public class PersonsController {
 	@FXML
 	private void eventbtnChange(){
 		int index = tablePerson.getSelectionModel().getSelectedIndex();
-		if(index==-1)return;
+		if(index==-1) return;
 		Main.id=index;
 		Stage stage = new Stage();
 		newWindows(stage);
@@ -119,7 +123,7 @@ public class PersonsController {
 	}
 	 private void newWindows(Stage stage) {
 			try {				
-		        Parent root = FXMLLoader.load(getClass().getResource("views/Person.fxml"));
+		        Parent root = FXMLLoader.load(getClass().getResource("../views/Person.fxml"));
 		        Scene scene = new Scene(root);
 		        stage.setScene(scene);
 		        stage.show();
