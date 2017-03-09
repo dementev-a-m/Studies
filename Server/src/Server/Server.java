@@ -15,24 +15,18 @@ public class Server implements Runnable{
 		static private ServerSocket server;
 		static private Socket connection;
 		static private ObjectOutputStream output;
-		static private ObjectInputStream input;
-		//static private ArrayList<Person> persons = new ArrayList<Person>();
-		public static void main(String[] args) {
-			
-			//new Thread(new Server()).start();
-		}
+		static private ObjectInputStream input;		
 		@Override
 		public void run() {
 			try {
 				server = new ServerSocket(5678,1000);
-				while(true) {
+				while(!Thread.currentThread().isInterrupted()) {
 					connection =  server.accept();
 					System.out.println(connection.getInetAddress());
 					output = new ObjectOutputStream(connection.getOutputStream());
 					input = new ObjectInputStream(connection.getInputStream());
 					output.writeObject(input.readObject());
 				}	
-				
 			}
 			catch(UnknownHostException e){}
 			catch (IOException e){} 
@@ -42,15 +36,15 @@ public class Server implements Runnable{
 				System.out.println("Сервер остановлен");
 			}
 		}	
-		/*public static void NewPers(){
+		public static void NewPers(Object obj){
 			try {
 				output.flush();
-				output.writeObject(new Person("Серввер","Присала"," хера"));
+				output.writeObject(null); //передаем объект
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-		}*/
+		}
 
 }

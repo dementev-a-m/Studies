@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javafx.scene.image.Image;
 
 public class Person {
+	private int id;
 	private String lastName;
 	private String  firstName;
 	private String middelName;
@@ -81,5 +82,11 @@ public class Person {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
