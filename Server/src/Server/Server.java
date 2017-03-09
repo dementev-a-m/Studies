@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
+import DB.DBWorker;
 
 public class Server implements Runnable{
 		static private ServerSocket server;
@@ -17,7 +18,8 @@ public class Server implements Runnable{
 		static private ObjectInputStream input;
 		//static private ArrayList<Person> persons = new ArrayList<Person>();
 		public static void main(String[] args) {
-				new Thread(new Server()).start();
+			
+			//new Thread(new Server()).start();
 		}
 		@Override
 		public void run() {

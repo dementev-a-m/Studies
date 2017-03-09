@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+
 import javafx.scene.image.Image;
 
 public class Person {

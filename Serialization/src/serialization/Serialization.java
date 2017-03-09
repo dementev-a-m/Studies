@@ -6,8 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class Serialization {
+	public byte version = 100;
+	public byte count = 0;
 	private Object deserialData(String fileName)
 	{	
 		Object retObject = null;

@@ -58,10 +58,11 @@ public class PersonsController {
 	}
 	@FXML
 	private void eventbtnAdd(){
-		//Stage stage = new Stage();
-		//newWindows(stage);
-		if(txfLastName.getText()!="" && txfFirstName.getText()!="" && txfMiddelName.getText()!="" &&getDate()!=null)
-			Main.persons.add(new Person (txfLastName.getText(),txfFirstName.getText(),txfMiddelName.getText(),getDate()));
+		PersonController.clickAdd=true;
+		PersonController.stage = new Stage();
+		newWindows(PersonController.stage);		
+		//if(txfLastName.getText()!="" && txfFirstName.getText()!="" && txfMiddelName.getText()!="" &&getDate()!=null)
+			//Main.persons.add(new Person (txfLastName.getText(),txfFirstName.getText(),txfMiddelName.getText(),getDate()));
 			//Client.sendData(txfLastName.getText());
 	}
 	@FXML
@@ -76,8 +77,9 @@ public class PersonsController {
 		int index = tablePerson.getSelectionModel().getSelectedIndex();
 		if(index==-1) return;
 		Main.id=index;
-		Stage stage = new Stage();
-		newWindows(stage);
+		PersonController.clickAdd=false;
+		PersonController.stage = new Stage();
+		newWindows(PersonController.stage);
 		/*Main.id=tablePerson.getSelectionModel().getSelectedIndex();
 		if(index==-1)return;
 		if(txfSecondName.getText()!="" && txtFirstName.getText()!="" && txtMiddelName.getText()!="" &&getDate()!=null) {
@@ -121,16 +123,18 @@ public class PersonsController {
 			dataBithday.setValue(null);
 		}
 	}
-	 private void newWindows(Stage stage) {
-			try {				
-		        Parent root = FXMLLoader.load(getClass().getResource("../views/Person.fxml"));
-		        Scene scene = new Scene(root);
-		        stage.setScene(scene);
-		        stage.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-	    }
+	private void newWindows(Stage stage) {
+		try {				
+	        Parent root = FXMLLoader.load(getClass().getResource("../views/Person.fxml"));
+	        Scene scene = new Scene(root);
+	        stage.setScene(scene);
+	        stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }

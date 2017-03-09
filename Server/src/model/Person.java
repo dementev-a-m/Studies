@@ -1,9 +1,11 @@
-package Server;
+package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.scene.image.Image;
 
-public class Person {
+public class Person implements Serializable
+{	private int id;
 	private String lastName;
 	private String  firstName;
 	private String middelName;
@@ -61,5 +63,11 @@ public class Person {
 	}
 	public void setPhoto(Image photo) {
 		this.photo = photo;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
